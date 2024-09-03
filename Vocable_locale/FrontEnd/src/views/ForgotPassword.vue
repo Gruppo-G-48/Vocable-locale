@@ -89,13 +89,13 @@ export default {
             if (valid) {
                 try {
 
-                    const response = await axios.post('https://vocable-g48-production-a10a.up.railway.app/api/utente/forgot-password', { email: this.email });
+                    const response = await axios.post('api/utente/forgot-password', { email: this.email });
 
                     if (response.data.status) {
                         const resetToken = response.data.resetToken;
                        
 
-                        const resetLink = `https://vocable-g48-production-a10a.up.railway.app/reset-password/${resetToken}`;
+                        const resetLink = `http://localhost:5173/reset-password/${resetToken}`;
                        
 
                         emailjs.init("LxMUIwv2KBoQWjQDz");

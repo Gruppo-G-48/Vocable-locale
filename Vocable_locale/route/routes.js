@@ -450,5 +450,103 @@ router.route('/utente/get-stats').get(authenticateToken, utentestatsController.s
  */
 
 router.route('/utente/update-stats').post(authenticateToken, utentestatsController.updateUtentestatsControllerFn);
+/**
+ * @swagger
+ * /utente/forgot-password:
+ *   post:
+ *     summary: Richiede il reset della password
+ *     description: Invia un'email per il reset della password all'indirizzo fornito.
+ *     tags:
+ *       - Utente
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: "mario.rossi@example.com"
+ *     responses:
+ *       200:
+ *         description: Email per il reset della password inviata con successo
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: "Email per il reset della password inviata"
+ *       400:
+ *         description: Richiesta non valida
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: boolean
+ *                   example: false
+ *                 message:
+ *                   type: string
+ *                   example: "Indirizzo email non valido"
+ */
+router.route('/utente/forgot-password').post(utenteController.forgotPasswordControllerFn);
 
+/**
+ * @swagger
+ * /utente/reset-password:
+ *   post:
+ *     summary: Reimposta la password dell'utente
+ *     description: Consente di reimpostare la password utilizzando un token di reset valido.
+ *     tags:
+ *       - Utente
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               token:
+ *                 type: string
+ *                 example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+ *               newPassword:
+ *                 type: string
+ *                 example: "nuovaPassword123"
+ *     responses:
+ *       200:
+ *         description: Password reimpostata con successo
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: boolean
+ *                   example: true
+ *                 message:
+ *                   type: string
+ *                   example: "Password reimpostata con successo"
+ *       400:
+ *         description: Token non valido o password non valida
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: boolean
+ *                   example: false
+ *                 message:
+ *                   type: string
+ *                   example: "Token non valido o password non valida"
+ */
+
+router.route('/utente/reset-password').post(utenteController.resetPasswordControllerFn);
 module.exports = router;
