@@ -9,12 +9,7 @@ const app = express();
 mongoose.set('strictQuery', false);
 
 var routes = require('./route/routes');
-//debug cors
-app.use((req, res, next) => {
-    console.log(`Incoming request: ${req.method} ${req.url}`);
-    console.log('Request headers:', req.headers);
-    next();
-});
+
 // Configurazione CORS
 app.use(cors({
     origin: 'http://localhost:5173',
@@ -31,15 +26,17 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use(express.json());
 app.use(routes);
 
-app.listen(9992, function check(err) {
+const port = process.env.PORT || 9992;
+
+app.listen(port, function check(err) {
     if (err) {
         console.log("Errore connessione al server");
     } else {
-        console.log("Server in ascolto sulla porta 9992");
+        console.log("Server in ascolto sulla porta:", port);
     }
 });
 
-mongoose.connect("mongodb://localhost:27017/utenti", {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(
