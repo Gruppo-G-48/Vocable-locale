@@ -3,10 +3,10 @@ var utenteService = require("./utenteServices");
 
 var createUtentestatsControllerFn = async (req, res) => {
     try {
-        console.log("\nregistrationstats");
-        console.log(req.body);
+        //console.log("\nregistrationstats");
+        //console.log(req.body);
         var status = await utentestatsServices.createUtentestatsDBService(req.body);
-        console.log(status);
+        //console.log(status);
 
         if (status) { //restituisce un messaggio se ha creato l'utente o se non è riuscito
             res.send({ "status": true, "message": "Utentestats creato con successo" });
@@ -16,7 +16,7 @@ var createUtentestatsControllerFn = async (req, res) => {
         }
     }
     catch (err) {
-        console.log(err);
+        //console.log(err);
     }
 }
 
@@ -49,7 +49,7 @@ var statGetterControllerFn = async (req, res) => {
         });
 
     } catch (error) {
-        console.error(error);
+        //console.error(error);
         res.status(500).json({ msg: 'Errore del server' });
     }
 };
@@ -65,7 +65,7 @@ var updateUtentestatsControllerFn = async (req, res) => {
             res.status(404).json({ status: false, message: result.message });
         }
     } catch (error) {
-        console.error(error);
+        //console.error(error);
         res.status(500).json({ status: false, message: 'Errore del server' });
     }
 };

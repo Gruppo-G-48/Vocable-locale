@@ -111,18 +111,18 @@ module.exports.logoutUtente = (req, res) => {
 
 
 module.exports.generateResetToken = (email) => {
-    console.log("Inizio generazione token per email:", email);
+    //console.log("Inizio generazione token per email:", email);
     
     return new Promise((resolve, reject) => {
         // Trova l'utente con l'email fornita
         utenteModel.findOne({ email: email }, (err, user) => {
             if (err) {
-                console.error("Errore durante la ricerca dell'utente:", err);
+                //console.error("Errore durante la ricerca dell'utente:", err);
                 return reject({ status: false, msg: "Errore durante la ricerca dell'utente" });
             }
 
             if (!user) {
-                console.warn("Email non trovata:", email);
+                //console.warn("Email non trovata:", email);
                 return reject({ status: false, msg: "Email non associata ad alcun account" });
             }
 
@@ -135,10 +135,10 @@ module.exports.generateResetToken = (email) => {
                 // Genera il token JWT
                 const resetToken = jwt.sign(payload, secret, options);
 
-                console.log("Token generato:", resetToken);
+                //console.log("Token generato:", resetToken);
                 return resolve({ status: true, msg: "Token generato con successo", resetToken });
             } catch (tokenErr) {
-                console.error("Errore durante la generazione del token JWT:", tokenErr);
+                //console.error("Errore durante la generazione del token JWT:", tokenErr);
                 return reject({ status: false, msg: "Errore durante la generazione del token" });
             }
         });
@@ -176,7 +176,7 @@ module.exports.resetPassword = async (token, newPassword) => {
 
                 resolve({ status: true, msg: 'Password aggiornata con successo' });
             } catch (error) {
-                console.error('Errore durante l\'aggiornamento della password:', error);
+                //console.error('Errore durante l\'aggiornamento della password:', error);
                 reject({ status: false, msg: 'Errore durante l\'aggiornamento della password' });
             }
         });

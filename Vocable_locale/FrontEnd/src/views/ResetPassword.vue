@@ -83,10 +83,10 @@ export default {
 
     methods: {
     async resetPassword() {
-        console.log('resetPassword chiamato');
-        console.log('Token:', this.token);
-        console.log('New Password:', this.newPassword);
-        console.log('Confirm Password:', this.confirmPassword);
+        //console.log('resetPassword chiamato');
+        //console.log('Token:', this.token);
+        //console.log('New Password:', this.newPassword);
+        //console.log('Confirm Password:', this.confirmPassword);
 
         // Validazione delle password
         if (this.newPassword !== this.confirmPassword) {
@@ -109,7 +109,7 @@ export default {
                 alert('Errore nel reset della password: ' + response.data.message);
             }
         } catch (error) {
-            console.error('Errore durante il reset della password:', error);
+            //console.error('Errore durante il reset della password:', error);
             alert('Errore durante il reset della password');
         }
     }

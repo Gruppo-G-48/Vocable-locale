@@ -27,7 +27,7 @@ const initializeAuth = async () => {
         try {
             await store.dispatch('auth/attempt', token);
         } catch (error) {
-            console.error('Autenticazione fallita:', error);
+            //console.error('Autenticazione fallita:', error);
         }
     }
 };

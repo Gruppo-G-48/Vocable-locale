@@ -30,7 +30,7 @@ const port = process.env.PORT || 9992;
 
 app.listen(port, function check(err) {
     if (err) {
-        console.log("Errore connessione al server");
+        //console.log("Errore connessione al server");
     } else {
         console.log("Server in ascolto sulla porta:", port);
     }
@@ -41,14 +41,14 @@ mongoose.connect(process.env.MONGO_URI, {
     useUnifiedTopology: true
 }).then(
     () => {
-        console.log("MongoDB Connection -- Ready state is:", mongoose.connection.readyState);
+        //console.log("MongoDB Connection -- Ready state is:", mongoose.connection.readyState);
     },
     (err) => {
-        console.log(err, ": database utenti non connesso");
+        //console.log(err, ": database utenti non connesso");
     }
 );
 
 app.use((err, req, res, next) => {
-    console.error('Errore nel server:', err);
+    //console.error('Errore nel server:', err);
     res.status(500).send('Errore nel server');
 });

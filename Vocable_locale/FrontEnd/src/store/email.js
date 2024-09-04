@@ -7,11 +7,11 @@ export default {
     },
     mutations: {
         SET_EMAIL_ERROR(state, errorMessage) {
-            console.log('Mutazione SET_EMAIL_ERROR chiamata con:', errorMessage);
+            //console.log('Mutazione SET_EMAIL_ERROR chiamata con:', errorMessage);
             state.emailError = errorMessage;
         },
         CLEAR_EMAIL_ERROR(state) {
-            console.log('Mutazione CLEAR_EMAIL_ERROR chiamata');
+            //console.log('Mutazione CLEAR_EMAIL_ERROR chiamata');
             state.emailError = null;
         }
     },
@@ -29,13 +29,13 @@ export default {
                 // Gestisci la risposta del server
                 if (response.data.status) {
                     // Registrazione avvenuta con successo
-                    console.log('Registrazione avvenuta con successo:', response.data);
+                    //console.log('Registrazione avvenuta con successo:', response.data);
                     // Puoi anche considerare di reimpostare l'errore se la registrazione ha successo
                     commit('CLEAR_EMAIL_ERROR');
                     return response;
                 } else {
                     // Gestisci l'errore specifico dal server
-                    console.log('Errore di registrazione:', response.data.message);
+                    //console.log('Errore di registrazione:', response.data.message);
                     if (response.data.message === 'Email già in uso') {
                         commit('SET_EMAIL_ERROR', 'Email già in uso');
                     } else {
@@ -43,17 +43,17 @@ export default {
                     }
                 }
             } catch (error) {
-                console.error('Errore durante la registrazione:', error);
+                //console.error('Errore durante la registrazione:', error);
                 // Gestisci gli errori della rete o imprevisti
                 commit('SET_EMAIL_ERROR', 'Errore durante la registrazione');
             }
         },
         setEmailError({ commit }, errorMessage) {
-            console.log('Azione setEmailError chiamata con messaggio:', errorMessage);
+            //console.log('Azione setEmailError chiamata con messaggio:', errorMessage);
             commit('SET_EMAIL_ERROR', errorMessage);
         },
         clearEmailError({ commit }) {
-            console.log('Azione clearEmailError chiamata');
+            //console.log('Azione clearEmailError chiamata');
             commit('CLEAR_EMAIL_ERROR');
         }
     }

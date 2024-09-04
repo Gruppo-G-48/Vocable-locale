@@ -48,7 +48,7 @@ export default {
                 commit('SET_USER', response.data)
                 if (response.data) {
                     commit('SET_USER', response.data);
-                    console.log(response.data)
+                    //console.log(response.data)
                 } else {
                     throw new Error('Dati utente mancanti');
                 }
@@ -56,7 +56,7 @@ export default {
             catch (e) {
                 commit('SET_TOKEN', null)
                 commit('SET_USER', null)
-                console.log('Salvataggio del token non riuscito')
+                //console.log('Salvataggio del token non riuscito')
             }
         },
 
@@ -64,7 +64,7 @@ export default {
             try {
                 await axios.post('/api/utente/logout');
             } catch (error) {
-                console.error('Logout failed:', error);
+                //console.error('Logout failed:', error);
             }
             commit('SET_TOKEN', null); // Rimuovi il token dallo store
             commit('SET_USER', null); // Resetta i dati utente

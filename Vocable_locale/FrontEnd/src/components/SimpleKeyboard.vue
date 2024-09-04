@@ -21,21 +21,21 @@ const onKeyPress = (button) => {
 };
 
 const resetKeyboard = () => {
-  console.log('Resetting keyboard...');
+  //console.log('Resetting keyboard...');
   try {
     if (keyboard.value) {
       const allButtons = 'Q W E R T Y U I O P A S D F G H J K L Z X C V B N M';
       keyboard.value.removeButtonTheme(allButtons, 'miss found hint');
     } else {
-      console.error('Keyboard not initialized');
+      //console.error('Keyboard not initialized');
     }
   } catch (error) {
-    console.error('Error during keyboard reset:', error);
+    //console.error('Error during keyboard reset:', error);
   }
 };
 
 onMounted(() => {
-  console.log('Component mounted');
+  //console.log('Component mounted');
   keyboard.value = new Keyboard('simple-keyboard', {
     layout: {
       default: [
@@ -66,7 +66,7 @@ watch(
   () => props.resetKeyboard,
   (reset) => {
     if (reset) {
-      console.log('Reset Keyboard Prop:', reset);
+      //console.log('Reset Keyboard Prop:', reset);
       resetKeyboard();
     }
   }
@@ -75,7 +75,7 @@ watch(
 watch(
   () => props.guessedLetters,
   (guessedLetters) => {
-    console.log('Guessed Letters Updated:', guessedLetters);
+    //console.log('Guessed Letters Updated:', guessedLetters);
 
     if (keyboard.value) {
       keyboard.value.addButtonTheme(

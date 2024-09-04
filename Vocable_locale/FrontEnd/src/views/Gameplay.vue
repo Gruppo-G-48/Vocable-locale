@@ -44,10 +44,10 @@ const refreshPage = async () => {
 
 // Funzione per gestire l'input da tastiera
 const handleInput = (key) => {
-  console.log('Handling input:', key); // Log per monitorare la chiave che viene gestita
+  //console.log('Handling input:', key); // Log per monitorare la chiave che viene gestita
   if (!state.statsSaved) {
     if ((wonGame.value || lostGame.value) && !state.statsSaved) {
-      console.log('Il gioco è terminato. Aggiorno le statistiche...');
+      //console.log('Il gioco è terminato. Aggiorno le statistiche...');
       updateUserStats(wonGame.value, state.currentGuessIndex); // Aggiorna le statistiche
       state.statsSaved = true;
       state.gameFinished = true; // Imposta lo stato del gioco come finito
@@ -69,7 +69,7 @@ const handleInput = (key) => {
         }
         state.currentGuessIndex++;
         if ((wonGame.value || lostGame.value) && !state.statsSaved) {
-          console.log('Il gioco è terminato. Aggiorno le statistiche...');
+          //console.log('Il gioco è terminato. Aggiorno le statistiche...');
           updateUserStats(wonGame.value, state.currentGuessIndex); // Aggiorna le statistiche
           state.statsSaved = true;
           state.gameFinished = true; // Imposta lo stato del gioco come finito
@@ -90,11 +90,11 @@ const handleInput = (key) => {
 // Funzione per aggiornare le statistiche dell'utente
 const updateUserStats = async (won, attempts) => {
   try {
-    console.log(`Updating stats: won=${won}, attempts=${attempts}`);
+    //console.log(`Updating stats: won=${won}, attempts=${attempts}`);
     await axios.post('/api/utente/update-stats', { won, attempts });
-    console.log('Statistiche aggiornate con successo');
+    //console.log('Statistiche aggiornate con successo');
   } catch (error) {
-    console.error('Errore durante l\'aggiornamento delle statistiche:', error);
+    //console.error('Errore durante l\'aggiornamento delle statistiche:', error);
   }
 };
 

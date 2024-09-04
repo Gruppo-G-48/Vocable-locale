@@ -59,7 +59,7 @@ export default {
   computed: {
     ...mapState('email', ['emailError']),
     currentEmailError() {
-      console.log('Stato corrente di emailError:', this.emailError);
+      //console.log('Stato corrente di emailError:', this.emailError);
       return this.emailError;
     }
   },
@@ -98,7 +98,7 @@ export default {
           this.$router.replace({ name: 'registrationcomplete' });
         } 
       } catch (error) {
-        console.log('Errore durante la registrazione:', error);
+        //console.log('Errore durante la registrazione:', error);
       } finally {
         this.loading = false;
       }

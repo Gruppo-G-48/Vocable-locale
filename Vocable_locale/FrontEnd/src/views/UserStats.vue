@@ -49,10 +49,10 @@ export default {
     async fetchUserStats() {
       try {
         const response = await axios.get('/api/utente/get-stats');
-        console.log('User stats received:', response.data);
+        //console.log('User stats received:', response.data);
         this.$store.commit('auth/SET_USER', response.data); // Assicurati di aggiornare lo stato
       } catch (error) {
-        console.error('Errore durante l\'ottenimento delle statistiche:', error);
+        //console.error('Errore durante l\'ottenimento delle statistiche:', error);
       }
     }
   },

@@ -107,17 +107,17 @@ export default {
 
               
                         const emailResponse = await emailjs.send('default_service', 'template_o30m3uc', templateParams);
-                        console.log("Risposta dall'invio email:", emailResponse); // Log della risposta da emailjs
+                        //console.log("Risposta dall'invio email:", emailResponse); // Log della risposta da emailjs
 
                         alert('Link di reset inviato con successo');
                         this.$router.push({ name: 'email-sent' });
 
                     } else {
-                        console.error('Errore durante la generazione del token:', response.data.message); // Log in caso di errore nella generazione del token
+                        //console.error('Errore durante la generazione del token:', response.data.message); // Log in caso di errore nella generazione del token
                         alert('Errore durante la generazione del token');
                     }
                 } catch (error) {
-                    console.error("Errore durante l'invio del link di reset:", error); // Log dell'errore catturato
+                    //console.error("Errore durante l'invio del link di reset:", error); // Log dell'errore catturato
                     alert('Errore durante l\'invio del link di reset');
                 }
             }

@@ -66,7 +66,7 @@ module.exports.updateUtentestatsDBService = async (email, won, attempts) => {
 
         return { status: true, message: 'Statistiche aggiornate con successo' };
     } catch (error) {
-        console.error(error);
+        //console.error(error);
         return { status: false, message: 'Errore del server' };
     }
 };
